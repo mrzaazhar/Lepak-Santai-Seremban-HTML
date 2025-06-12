@@ -103,23 +103,51 @@ function updateActiveNavLink() {
 // Update active nav link on scroll
 window.addEventListener('scroll', updateActiveNavLink);
 
-// Add scroll reveal animation
-const revealElements = document.querySelectorAll('.hero, .about, .services, .contact');
-
+// Scroll Reveal Animation
 function revealOnScroll() {
-    revealElements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-
-        if (elementTop < windowHeight - 100) {
-            element.classList.add('revealed');
+    document.querySelectorAll('.reveal').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 60) {
+            el.classList.add('visible');
         }
     });
 }
-
-// Initial check for elements in view
-window.addEventListener('load', revealOnScroll);
 window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+
+// Nav Shrink on Scroll
+const header = document.querySelector('.header');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+        header.classList.add('shrink');
+    } else {
+        header.classList.remove('shrink');
+    }
+});
+
+// Back to Top Button
+const backToTopBtn = document.createElement('button');
+backToTopBtn.className = 'back-to-top';
+backToTopBtn.innerHTML = '&#8679;';
+document.body.appendChild(backToTopBtn);
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        backToTopBtn.classList.add('visible');
+    } else {
+        backToTopBtn.classList.remove('visible');
+    }
+});
+backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Add .reveal class to sections and menu items
+window.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('section, .menu-category').forEach(el => {
+        el.classList.add('reveal');
+    });
+    revealOnScroll();
+});
 
 // Add CSS class for revealed elements
 document.head.insertAdjacentHTML('beforeend', `
