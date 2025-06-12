@@ -96,6 +96,13 @@ a:hover {
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(237, 192, 1, 0.1);
+    transition: background 0.3s, box-shadow 0.3s, filter 0.3s;
+}
+
+.header:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 4px 16px 0 rgba(237, 192, 1, 0.25);
+    background-color: var(--primary-color);
 }
 
 .nav {
