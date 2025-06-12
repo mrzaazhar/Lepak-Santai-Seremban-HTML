@@ -731,4 +731,10 @@ section:nth-child(even) {
     .price {
         align-self: flex-end;
     }
+}
+
+/* Remove menu slider styles */
+.menu-slider, .menu-arrow, .menu-slides, .menu-slide {
+    all: unset;
+    display: revert;
 } 
