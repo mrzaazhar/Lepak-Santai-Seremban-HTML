@@ -737,4 +737,41 @@ section:nth-child(even) {
 .menu-slider, .menu-arrow, .menu-slides, .menu-slide {
     all: unset;
     display: revert;
+}
+
+.menu-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.filter-btn {
+    background: var(--light-background);
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    border-radius: var(--border-radius);
+    padding: 0.5rem 1.25rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    border-color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+    .menu-filters {
+        gap: 0.25rem;
+    }
+    .filter-btn {
+        font-size: 0.95rem;
+        padding: 0.4rem 0.8rem;
+    }
 } 
